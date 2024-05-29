@@ -1,25 +1,27 @@
 package com.literalura.challenge.model;
 
-import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String author;
     private String language;
-    @SerializedName("download_count")
-    private int downloads;
+    private Integer downloads;
 
-    public Book() {}
+    public Book() {
+    }
 
     @Override
     public String toString() {
-        return String.format("Title: %s\nAuthor: %s\nLanguage: %s\nDownloads: %d",
+        return String.format("Id: %s\nTitle: %s\nAuthor: %s\nLanguage: %s\nDownloads: %d",
+                id,
                 title,
                 author,
                 language,
