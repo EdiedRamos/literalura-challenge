@@ -1,6 +1,9 @@
 package com.literalura.challenge;
 
+import com.literalura.challenge.deserialization.BookDeserializer;
+import com.literalura.challenge.dto.BookData;
 import com.literalura.challenge.service.GutendexRequest;
+import com.literalura.challenge.service.JSONConverter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +17,8 @@ public class LiteraluraChallengeApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String data = GutendexRequest.searchByTitle("Frankenstein; Or, The Modern Prometheus");
+        String json = GutendexRequest.searchByTitle("");
+        BookData data = new JSONConverter().toObjectWithBuilder(json, BookData.class, new BookDeserializer());
         System.out.println("Information: " + data);
     }
 }

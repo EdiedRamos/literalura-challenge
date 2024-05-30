@@ -11,12 +11,20 @@ public class BookDeserializer implements JsonDeserializer<BookData> {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         BookData book = new BookData();
 
+        JsonArray results = jsonObject.getAsJsonArray("results");
+
+        if (results.isEmpty()) {
+            throw new Error("Book title not found");
+        }
+
+        JsonObject firstBook = results.get(0).getAsJsonObject();
+
 //        Automatically deserialization
         Gson gson = new Gson();
-        book = gson.fromJson(jsonElement, BookData.class);
+        book = gson.fromJson(firstBook, BookData.class);
 
 //        Deserialize author name
-        JsonArray authors = jsonObject.getAsJsonArray("authors");
+        JsonArray authors = firstBook.getAsJsonArray("authors");
         if (!authors.isEmpty()) {
             JsonObject firstAuthor = authors.get(0).getAsJsonObject();
             String authorName = firstAuthor.get("name").getAsString();
@@ -24,7 +32,7 @@ public class BookDeserializer implements JsonDeserializer<BookData> {
         }
 
 //        Deserialize language
-        JsonArray languages = jsonObject.getAsJsonArray("languages");
+        JsonArray languages = firstBook.getAsJsonArray("languages");
         if (!languages.isEmpty()) {
             String firstLanguage = languages.get(0).getAsString();
             book.setLanguage(firstLanguage);
