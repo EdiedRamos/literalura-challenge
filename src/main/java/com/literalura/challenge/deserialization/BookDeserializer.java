@@ -14,7 +14,7 @@ public class BookDeserializer implements JsonDeserializer<BookData> {
         JsonArray results = jsonObject.getAsJsonArray("results");
 
         if (results.isEmpty()) {
-            throw new Error("Book title not found");
+            throw new RuntimeException(new Exception("Libro no encontrado"));
         }
 
         JsonObject firstBook = results.get(0).getAsJsonObject();

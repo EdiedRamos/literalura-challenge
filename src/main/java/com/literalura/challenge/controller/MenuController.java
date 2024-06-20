@@ -1,17 +1,16 @@
 package com.literalura.challenge.controller;
 
+import com.literalura.challenge.dto.BookData;
+import com.literalura.challenge.service.BookService;
+
 public class MenuController {
-    public void controllerProxy(String option) {
-        switch (option) {
-            case "1" -> {
-                System.out.println("1 - En progreso");
-            }
-            case "2" -> {
-                System.out.println("2 - En progreso");
-            }
-            default -> {
-                System.out.println("Opcion no reconocida");
-            }
-        }
+    private final BookService bookService;
+
+    public MenuController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    public BookData searchBookByTitle(String bookTitle) {
+        return bookService.searchBookByTitle(bookTitle);
     }
 }
