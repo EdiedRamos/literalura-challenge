@@ -1,4 +1,4 @@
-package com.literalura.challenge.model;
+package com.literalura.challenge.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

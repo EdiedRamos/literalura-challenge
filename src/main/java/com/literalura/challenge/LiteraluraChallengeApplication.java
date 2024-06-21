@@ -1,9 +1,7 @@
 package com.literalura.challenge;
 
 import com.literalura.challenge.controller.MenuController;
-import com.literalura.challenge.model.Book;
 import com.literalura.challenge.service.BookService;
-import com.literalura.challenge.service.GutendexRequest;
 import com.literalura.challenge.view.Menu;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
