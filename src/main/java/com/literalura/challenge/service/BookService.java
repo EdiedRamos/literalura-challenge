@@ -5,12 +5,11 @@ import com.literalura.challenge.dto.BookDTO;
 import com.literalura.challenge.entity.Book;
 import com.literalura.challenge.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class BookService {
 
     private final GutendexRequest gutendexRequest;
