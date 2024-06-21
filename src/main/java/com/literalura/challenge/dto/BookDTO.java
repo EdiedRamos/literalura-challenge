@@ -8,14 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class BookData {
+public class BookDTO {
     private String title;
     private String author;
     private String language;
     @SerializedName("download_count")
     private int downloads;
 
-    public BookData() {}
+    public BookDTO() {}
 
     @Override
     public String toString() {

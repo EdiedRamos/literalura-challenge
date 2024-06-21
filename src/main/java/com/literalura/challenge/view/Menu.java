@@ -1,7 +1,7 @@
 package com.literalura.challenge.view;
 
 import com.literalura.challenge.controller.MenuController;
-import com.literalura.challenge.dto.BookData;
+import com.literalura.challenge.dto.BookDTO;
 
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +23,7 @@ public class Menu {
         System.out.println("Ingrese el nombre del libro: ");
         String bookTitle = scanner.nextLine();
         try {
-            BookData bookFound = menuController.searchBookByTitle(bookTitle);
+            BookDTO bookFound = menuController.searchBookByTitle(bookTitle);
             System.out.println(bookFound);
         } catch (Exception exception) {
             System.out.println(exception.getMessage());

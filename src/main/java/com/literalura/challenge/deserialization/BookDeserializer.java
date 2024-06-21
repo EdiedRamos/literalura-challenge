@@ -1,15 +1,15 @@
 package com.literalura.challenge.deserialization;
 
 import com.google.gson.*;
-import com.literalura.challenge.dto.BookData;
+import com.literalura.challenge.dto.BookDTO;
 
 import java.lang.reflect.Type;
 
-public class BookDeserializer implements JsonDeserializer<BookData> {
+public class BookDeserializer implements JsonDeserializer<BookDTO> {
     @Override
-    public BookData deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public BookDTO deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        BookData book = new BookData();
+        BookDTO book = new BookDTO();
 
         JsonArray results = jsonObject.getAsJsonArray("results");
 
@@ -21,7 +21,7 @@ public class BookDeserializer implements JsonDeserializer<BookData> {
 
 //        Automatically deserialization
         Gson gson = new Gson();
-        book = gson.fromJson(firstBook, BookData.class);
+        book = gson.fromJson(firstBook, BookDTO.class);
 
 //        Deserialize author name
         JsonArray authors = firstBook.getAsJsonArray("authors");

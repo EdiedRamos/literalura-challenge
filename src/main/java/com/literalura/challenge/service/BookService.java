@@ -1,7 +1,7 @@
 package com.literalura.challenge.service;
 
 import com.literalura.challenge.deserialization.BookDeserializer;
-import com.literalura.challenge.dto.BookData;
+import com.literalura.challenge.dto.BookDTO;
 
 public class BookService {
 
@@ -11,10 +11,10 @@ public class BookService {
         gutendexRequest = new GutendexRequest();
     }
 
-    public BookData searchBookByTitle(String bookTitle) {
+    public BookDTO searchBookByTitle(String bookTitle) {
         JSONConverter jsonConverter = new JSONConverter();
         String resultJson = gutendexRequest.searchByTitle(bookTitle);
-        return jsonConverter.toObjectWithBuilder(resultJson, BookData.class, new BookDeserializer());
+        return jsonConverter.toObjectWithBuilder(resultJson, BookDTO.class, new BookDeserializer());
     }
 
 }

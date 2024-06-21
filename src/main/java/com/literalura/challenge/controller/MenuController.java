@@ -1,6 +1,6 @@
 package com.literalura.challenge.controller;
 
-import com.literalura.challenge.dto.BookData;
+import com.literalura.challenge.dto.BookDTO;
 import com.literalura.challenge.service.BookService;
 
 public class MenuController {
@@ -10,7 +10,7 @@ public class MenuController {
         this.bookService = bookService;
     }
 
-    public BookData searchBookByTitle(String bookTitle) {
+    public BookDTO searchBookByTitle(String bookTitle) {
         return bookService.searchBookByTitle(bookTitle);
     }
 }
