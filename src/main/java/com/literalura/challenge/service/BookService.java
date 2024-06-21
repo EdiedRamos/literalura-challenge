@@ -3,10 +3,16 @@ package com.literalura.challenge.service;
 import com.literalura.challenge.deserialization.BookDeserializer;
 import com.literalura.challenge.dto.BookDTO;
 import com.literalura.challenge.entity.Book;
+import com.literalura.challenge.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookService {
 
     private final GutendexRequest gutendexRequest;
+    @Autowired
+    BookRepository bookRepository;
 
     public BookService() {
         gutendexRequest = new GutendexRequest();
@@ -15,7 +21,10 @@ public class BookService {
     public BookDTO searchBookByTitle(String bookTitle) {
         JSONConverter jsonConverter = new JSONConverter();
         String resultJson = gutendexRequest.searchByTitle(bookTitle);
-        return jsonConverter.toObjectWithBuilder(resultJson, BookDTO.class, new BookDeserializer());
+        BookDTO bookDTO = jsonConverter.toObjectWithBuilder(resultJson, BookDTO.class, new BookDeserializer());
+        Book book = fromBookDTO(bookDTO);
+        bookRepository.save(book);
+        return bookDTO;
     }
 
     //    TODO: This could be omitted with Mappers
