@@ -7,6 +7,9 @@ import com.literalura.challenge.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class BookService {
 
@@ -25,6 +28,10 @@ public class BookService {
         Book book = fromBookDTO(bookDTO);
         bookRepository.save(book);
         return bookDTO;
+    }
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 
     //    TODO: This could be omitted with Mappers

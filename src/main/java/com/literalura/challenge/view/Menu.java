@@ -36,7 +36,8 @@ public class Menu {
                 searchTitleMenu();
             }
             case "2" -> {
-                System.out.println("2 - En progreso");
+                System.out.println("Libros guardados en la base de datos:");
+                menuController.listAllBooks().forEach(System.out::println);
             }
             default -> {
                 System.out.println("Opcion no reconocida");
