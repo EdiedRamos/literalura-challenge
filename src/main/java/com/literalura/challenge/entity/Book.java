@@ -12,23 +12,21 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String author;
     private String language;
     private Integer downloads;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private Author authorInfo;
+    private Author author;
 
     public Book() {
     }
 
     @Override
     public String toString() {
-        return String.format("Id: %s\nTitle: %s\nAuthor: %s\nLanguage: %s\nDownloads: %d",
+        return String.format("Id: %s\nTitle: %s\nLanguage: %s\nDownloads: %d",
                 id,
                 title,
-                author,
                 language,
                 downloads);
     }

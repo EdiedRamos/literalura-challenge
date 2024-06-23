@@ -37,7 +37,6 @@ public class BookService {
     private Book fromBookDTO(BookDTO bookDTO) {
         Book book = new Book();
         book.setTitle(bookDTO.getTitle());
-        book.setAuthor(bookDTO.getAuthor());
         book.setLanguage(bookDTO.getLanguage());
         book.setDownloads(bookDTO.getDownloads());
         return book;
