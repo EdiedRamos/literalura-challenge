@@ -1,9 +1,6 @@
 package com.literalura.challenge.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +15,10 @@ public class Book {
     private String author;
     private String language;
     private Integer downloads;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author authorInfo;
 
     public Book() {
     }
