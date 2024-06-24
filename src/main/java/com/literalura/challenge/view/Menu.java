@@ -14,7 +14,8 @@ public class Menu {
     public Menu(MenuController menuController) {
         options = List.of("[1] Buscar libro por título"
                 , "[2] Lista de todos los libros"
-                , "[3] Salir");
+                , "[3] Lista de todos loa autores"
+                , "[exit] Salir");
         scanner = new Scanner(System.in);
         this.menuController = menuController;
     }
@@ -36,8 +37,15 @@ public class Menu {
                 searchTitleMenu();
             }
             case "2" -> {
-                System.out.println("Libros guardados en la base de datos:");
+                System.out.println("<< LIBROS >>");
                 menuController.listAllBooks().forEach(System.out::println);
+            }
+            case "3" -> {
+                System.out.println("<< AUTORES >>");
+                menuController.listAllAuthors().forEach(System.out::println);
+            }
+            case "exit" -> {
+                System.out.println("Gracias por usar el sistema...");
             }
             default -> {
                 System.out.println("Opcion no reconocida");
@@ -52,7 +60,7 @@ public class Menu {
 
     private void cycle() {
         String selectedOption = "";
-        while (!selectedOption.equals("3")) {
+        while (!selectedOption.equals("exit")) {
             showOptions();
             selectedOption = scanner.nextLine();
             optionsProxy(selectedOption);

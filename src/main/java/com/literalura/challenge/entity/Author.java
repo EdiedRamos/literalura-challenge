@@ -22,4 +22,8 @@ public class Author {
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Book> books;
+
+    public String toString() {
+        return String.format("Id: %s, Name: %s, Birth year: %d, Death year: %d", id, name, birthYear, deathYear);
+    }
 }
