@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BookDTO {
     private String title;
-    private String author;
     private String language;
     @SerializedName("download_count")
     private int downloads;
@@ -19,9 +18,8 @@ public class BookDTO {
 
     @Override
     public String toString() {
-        return String.format("Title: %s\nAuthor: %s\nLanguage: %s\nDownloads: %d",
+        return String.format("Title: %s\nLanguage: %s\nDownloads: %d",
                 title,
-                author,
                 language,
                 downloads);
     }

@@ -23,14 +23,6 @@ public class BookDeserializer implements JsonDeserializer<BookDTO> {
         Gson gson = new Gson();
         book = gson.fromJson(firstBook, BookDTO.class);
 
-//        Deserialize author name
-        JsonArray authors = firstBook.getAsJsonArray("authors");
-        if (!authors.isEmpty()) {
-            JsonObject firstAuthor = authors.get(0).getAsJsonObject();
-            String authorName = firstAuthor.get("name").getAsString();
-            book.setAuthor(authorName);
-        }
-
 //        Deserialize language
         JsonArray languages = firstBook.getAsJsonArray("languages");
         if (!languages.isEmpty()) {
