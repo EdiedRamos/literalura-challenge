@@ -31,4 +31,8 @@ public class MenuController {
     public List<Author> listAllAuthors() {
         return authorService.getAllAuthors();
     }
+
+    public List<Author> listAllAliveAuthorsInYear(Integer year) {
+        return authorService.getAliveInYear(year);
+    }
 }

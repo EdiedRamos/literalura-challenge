@@ -15,4 +15,12 @@ public class AuthorService {
     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
+
+    public List<Author> getAliveInYear(Integer year) {
+        var authors = authorRepository.findByBirthYearLessThanEqualAndDeathYearGreaterThanEqual(year, year);
+        if (authors.isEmpty()) {
+            throw new RuntimeException(new Exception("Autores no encontrados"));
+        }
+        return authors;
+    }
 }

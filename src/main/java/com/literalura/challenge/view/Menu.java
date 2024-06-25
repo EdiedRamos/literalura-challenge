@@ -15,6 +15,7 @@ public class Menu {
         options = List.of("[1] Buscar libro por título"
                 , "[2] Lista de todos los libros"
                 , "[3] Lista de todos loa autores"
+                , "[4] Autores vivos en un año determinado"
                 , "[exit] Salir");
         scanner = new Scanner(System.in);
         this.menuController = menuController;
@@ -31,6 +32,18 @@ public class Menu {
         }
     }
 
+    private void searchByAliveYear() {
+        System.out.println("Ingrese el año de consulta: ");
+        try {
+            int aliveYear = Integer.parseInt(scanner.nextLine());
+            System.out.printf("Autores vivos en el año %d%n", aliveYear);
+            menuController.listAllAliveAuthorsInYear(aliveYear).forEach(System.out::println);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
     public void optionsProxy(String option) {
         switch (option) {
             case "1" -> {
@@ -43,6 +56,9 @@ public class Menu {
             case "3" -> {
                 System.out.println("<< AUTORES >>");
                 menuController.listAllAuthors().forEach(System.out::println);
+            }
+            case "4" -> {
+                searchByAliveYear();
             }
             case "exit" -> {
                 System.out.println("Gracias por usar el sistema...");
